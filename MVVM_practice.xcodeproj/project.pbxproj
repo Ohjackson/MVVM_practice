@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D64AD40C2D1C7EA400B3BD4B /* RootNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64AD40B2D1C7EA400B3BD4B /* RootNavigationView.swift */; };
+		D64AD40E2D1C80D700B3BD4B /* DummyNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64AD40D2D1C80D700B3BD4B /* DummyNetworkManager.swift */; };
 		D64D7B092D1C3583000495C2 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D7B082D1C3583000495C2 /* TaskModel.swift */; };
 		D64D7B0B2D1C3670000495C2 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D7B0A2D1C3670000495C2 /* TaskViewModel.swift */; };
 		D64D7B0D2D1C36D9000495C2 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D7B0C2D1C36D9000495C2 /* TaskViewController.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		D64AD40B2D1C7EA400B3BD4B /* RootNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationView.swift; sourceTree = "<group>"; };
+		D64AD40D2D1C80D700B3BD4B /* DummyNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyNetworkManager.swift; sourceTree = "<group>"; };
 		D64D7B082D1C3583000495C2 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		D64D7B0A2D1C3670000495C2 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		D64D7B0C2D1C36D9000495C2 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				D69A318E2D1C0D9800DFFEDB /* UserModel.swift */,
 				D64D7B082D1C3583000495C2 /* TaskModel.swift */,
+				D64AD40D2D1C80D700B3BD4B /* DummyNetworkManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			files = (
 				D69A316A2D1BFA6F00DFFEDB /* ViewController.swift in Sources */,
 				D69A31662D1BFA6F00DFFEDB /* AppDelegate.swift in Sources */,
+				D64AD40E2D1C80D700B3BD4B /* DummyNetworkManager.swift in Sources */,
 				D69A31682D1BFA6F00DFFEDB /* SceneDelegate.swift in Sources */,
 				D69A318D2D1C0D7400DFFEDB /* LoginViewModel.swift in Sources */,
 				D64AD40C2D1C7EA400B3BD4B /* RootNavigationView.swift in Sources */,
