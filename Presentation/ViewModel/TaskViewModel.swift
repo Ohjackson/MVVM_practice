@@ -30,12 +30,13 @@ final class TaskViewModel {
     var pointUpdated: ((Int) -> Void)?
 
     func fetchTask(for userID: String, taskID: String, completion: @escaping () -> Void) {
-        DummyNetworkManager.shared.fetchTasks(for: userID, taskID: taskID) { [weak self] fetchedTask in
+        DummyNetworkManager.shared.fetchTask(for: userID, taskID: taskID) { [weak self] (fetchedTask: TaskModel?) in
             guard let self = self else { return }
             self.task = fetchedTask
             completion()
         }
     }
+
 
     func increasePoint() {
         guard var currentTask = task else { return }
