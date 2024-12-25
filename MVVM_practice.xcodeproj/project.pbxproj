@@ -16,6 +16,9 @@
 		D69A31802D1BFCA300DFFEDB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D69A317F2D1BFCA300DFFEDB /* Then */; };
 		D69A31832D1BFCBA00DFFEDB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D69A31822D1BFCBA00DFFEDB /* SnapKit */; };
 		D69A31862D1BFCE400DFFEDB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D69A31852D1BFCE400DFFEDB /* Alamofire */; };
+		D69A318B2D1C0BCB00DFFEDB /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69A318A2D1C0BCB00DFFEDB /* UserLoginViewController.swift */; };
+		D69A318D2D1C0D7400DFFEDB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69A318C2D1C0D7400DFFEDB /* LoginViewModel.swift */; };
+		D69A318F2D1C0D9800DFFEDB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69A318E2D1C0D9800DFFEDB /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		D69A316E2D1BFA7100DFFEDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D69A31712D1BFA7100DFFEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D69A31732D1BFA7100DFFEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D69A318A2D1C0BCB00DFFEDB /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
+		D69A318C2D1C0D7400DFFEDB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D69A318E2D1C0D9800DFFEDB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +71,8 @@
 			isa = PBXGroup;
 			children = (
 				D69A31672D1BFA6F00DFFEDB /* SceneDelegate.swift */,
-				D69A31732D1BFA7100DFFEDB /* Info.plist */,
 				D69A31702D1BFA7100DFFEDB /* LaunchScreen.storyboard */,
+				D69A31732D1BFA7100DFFEDB /* Info.plist */,
 				D69A316B2D1BFA6F00DFFEDB /* Main.storyboard */,
 				D69A31652D1BFA6F00DFFEDB /* AppDelegate.swift */,
 			);
@@ -92,9 +98,36 @@
 		D69A317D2D1BFC2A00DFFEDB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				D69A31692D1BFA6F00DFFEDB /* ViewController.swift */,
+				D69A31892D1C052A00DFFEDB /* Model */,
+				D69A31882D1C052400DFFEDB /* ViewModel */,
+				D69A31872D1C051A00DFFEDB /* View */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		D69A31872D1C051A00DFFEDB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D69A31692D1BFA6F00DFFEDB /* ViewController.swift */,
+				D69A318A2D1C0BCB00DFFEDB /* UserLoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D69A31882D1C052400DFFEDB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D69A318C2D1C0D7400DFFEDB /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D69A31892D1C052A00DFFEDB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D69A318E2D1C0D9800DFFEDB /* UserModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +215,9 @@
 				D69A316A2D1BFA6F00DFFEDB /* ViewController.swift in Sources */,
 				D69A31662D1BFA6F00DFFEDB /* AppDelegate.swift in Sources */,
 				D69A31682D1BFA6F00DFFEDB /* SceneDelegate.swift in Sources */,
+				D69A318D2D1C0D7400DFFEDB /* LoginViewModel.swift in Sources */,
+				D69A318F2D1C0D9800DFFEDB /* UserModel.swift in Sources */,
+				D69A318B2D1C0BCB00DFFEDB /* UserLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +252,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5UQJWXQTJD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MVVM_practice/Info.plist;
+				INFOPLIST_FILE = Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -244,7 +280,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5UQJWXQTJD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MVVM_practice/Info.plist;
+				INFOPLIST_FILE = Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
