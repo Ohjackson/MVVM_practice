@@ -53,8 +53,9 @@ final class TaskViewController: UIViewController {
     }
     
     @objc private func didTapBackButton() {
-//        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
+
     
     private func setStyle() {
         

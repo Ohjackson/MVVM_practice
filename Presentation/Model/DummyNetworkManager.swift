@@ -48,11 +48,18 @@ final class DummyNetworkManager {
         }
     }
 
-    
     func fetchTaskFolders(for userID: String, completion: @escaping ([TaskFolderModel]) -> Void) {
         DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
             let filteredFolders = self.taskFolders.filter { $0.userID == userID }
             completion(filteredFolders)
         }
     }
+    
+    func fetchTasks(for folderID: String, taskID: String?, completion: @escaping ([TaskModel]) -> Void) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
+            let tasks = self.tasks.filter { taskID == nil || $0.id == taskID }
+            completion(tasks)
+        }
+    }
+
 }

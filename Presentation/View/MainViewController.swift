@@ -120,12 +120,19 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(id: folder.id, name: folder.name)
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let folder = viewModel.folders[indexPath.row]
-        print("Selected Folder: \(folder.name)")
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+           let folder = viewModel.folders[indexPath.row]
+           let folderID = folder.id
+           let folderName = folder.name
+
+           // ViewModel 생성 및 TaskListViewController로 모달로 표시
+           let taskListViewModel = TaskListViewModel(folderID: folderID, folderName: folderName)
+           let taskListVC = TaskListViewController(viewModel: taskListViewModel)
+           taskListVC.modalPresentationStyle = .fullScreen // 모달 스타일 설정
+           present(taskListVC, animated: true, completion: nil)
+       }
+    
 }
 
 

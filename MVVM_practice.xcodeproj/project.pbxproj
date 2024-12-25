@@ -13,6 +13,8 @@
 		D64AD4122D1C8D6C00B3BD4B /* TaskFolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64AD4112D1C8D6C00B3BD4B /* TaskFolderModel.swift */; };
 		D64AD4142D1C8D7E00B3BD4B /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64AD4132D1C8D7E00B3BD4B /* FolderViewModel.swift */; };
 		D64AD4162D1C8ED800B3BD4B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64AD4152D1C8ED800B3BD4B /* MainViewController.swift */; };
+		D64AD4182D1C925D00B3BD4B /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64AD4172D1C925D00B3BD4B /* TaskListViewController.swift */; };
+		D64AD41A2D1C928A00B3BD4B /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64AD4192D1C928A00B3BD4B /* TaskListViewModel.swift */; };
 		D64D7B092D1C3583000495C2 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D7B082D1C3583000495C2 /* TaskModel.swift */; };
 		D64D7B0B2D1C3670000495C2 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D7B0A2D1C3670000495C2 /* TaskViewModel.swift */; };
 		D64D7B0D2D1C36D9000495C2 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D7B0C2D1C36D9000495C2 /* TaskViewController.swift */; };
@@ -37,6 +39,8 @@
 		D64AD4112D1C8D6C00B3BD4B /* TaskFolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFolderModel.swift; sourceTree = "<group>"; };
 		D64AD4132D1C8D7E00B3BD4B /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
 		D64AD4152D1C8ED800B3BD4B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D64AD4172D1C925D00B3BD4B /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
+		D64AD4192D1C928A00B3BD4B /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
 		D64D7B082D1C3583000495C2 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		D64D7B0A2D1C3670000495C2 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		D64D7B0C2D1C36D9000495C2 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +56,14 @@
 		D69A318C2D1C0D7400DFFEDB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D69A318E2D1C0D9800DFFEDB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D64AD4232D1C962500B3BD4B /* New Folder */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "New Folder";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D69A315F2D1BFA6F00DFFEDB /* Frameworks */ = {
@@ -116,6 +128,7 @@
 		D69A317D2D1BFC2A00DFFEDB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				D64AD4232D1C962500B3BD4B /* New Folder */,
 				D69A31892D1C052A00DFFEDB /* Model */,
 				D69A31882D1C052400DFFEDB /* ViewModel */,
 				D69A31872D1C051A00DFFEDB /* View */,
@@ -129,6 +142,7 @@
 				D69A31692D1BFA6F00DFFEDB /* ViewController.swift */,
 				D69A318A2D1C0BCB00DFFEDB /* UserLoginViewController.swift */,
 				D64D7B0C2D1C36D9000495C2 /* TaskViewController.swift */,
+				D64AD4172D1C925D00B3BD4B /* TaskListViewController.swift */,
 				D64AD40F2D1C896B00B3BD4B /* Row.swift */,
 				D64AD40B2D1C7EA400B3BD4B /* RootViewController.swift */,
 				D64AD4152D1C8ED800B3BD4B /* MainViewController.swift */,
@@ -141,6 +155,7 @@
 			children = (
 				D69A318C2D1C0D7400DFFEDB /* LoginViewModel.swift */,
 				D64D7B0A2D1C3670000495C2 /* TaskViewModel.swift */,
+				D64AD4192D1C928A00B3BD4B /* TaskListViewModel.swift */,
 				D64AD4132D1C8D7E00B3BD4B /* FolderViewModel.swift */,
 			);
 			path = ViewModel;
@@ -171,6 +186,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D64AD4232D1C962500B3BD4B /* New Folder */,
 			);
 			name = MVVM_practice;
 			packageProductDependencies = (
@@ -241,9 +259,11 @@
 			files = (
 				D69A316A2D1BFA6F00DFFEDB /* ViewController.swift in Sources */,
 				D69A31662D1BFA6F00DFFEDB /* AppDelegate.swift in Sources */,
+				D64AD41A2D1C928A00B3BD4B /* TaskListViewModel.swift in Sources */,
 				D64AD40E2D1C80D700B3BD4B /* DummyNetworkManager.swift in Sources */,
 				D69A31682D1BFA6F00DFFEDB /* SceneDelegate.swift in Sources */,
 				D64AD4102D1C896B00B3BD4B /* Row.swift in Sources */,
+				D64AD4182D1C925D00B3BD4B /* TaskListViewController.swift in Sources */,
 				D69A318D2D1C0D7400DFFEDB /* LoginViewModel.swift in Sources */,
 				D64AD40C2D1C7EA400B3BD4B /* RootViewController.swift in Sources */,
 				D69A318F2D1C0D9800DFFEDB /* UserModel.swift in Sources */,
