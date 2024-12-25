@@ -6,8 +6,7 @@
 //
 
 import Foundation
-
-final class TaskListViewModel {
+final class TaskLiViewModel {
     private(set) var tasks: [TaskModel] = []
     private let folderID: String
     private(set) var folderName: String
@@ -24,22 +23,4 @@ final class TaskListViewModel {
             self.tasksUpdated?()
         }
     }
-
-    func addTask(name: String) {
-        let newTask = TaskModel(
-            id: UUID().uuidString,
-            name: name,
-            point: 0,
-            targetScore: 10
-        )
-        tasks.append(newTask)
-        DispatchQueue.main.async {
-            self.tasksUpdated?()
-        }
-    }
-    
-    // MARK: - Test용 메서드
-       func setDummyTasks(_ dummyTasks: [TaskModel]) {
-           self.tasks = dummyTasks
-       }
 }

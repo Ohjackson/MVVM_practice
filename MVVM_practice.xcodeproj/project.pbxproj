@@ -57,6 +57,14 @@
 		D69A318E2D1C0D9800DFFEDB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D64AD4232D1C962500B3BD4B /* New Folder */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "New Folder";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		D69A315F2D1BFA6F00DFFEDB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -120,6 +128,7 @@
 		D69A317D2D1BFC2A00DFFEDB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				D64AD4232D1C962500B3BD4B /* New Folder */,
 				D69A31892D1C052A00DFFEDB /* Model */,
 				D69A31882D1C052400DFFEDB /* ViewModel */,
 				D69A31872D1C051A00DFFEDB /* View */,
@@ -177,6 +186,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D64AD4232D1C962500B3BD4B /* New Folder */,
 			);
 			name = MVVM_practice;
 			packageProductDependencies = (
