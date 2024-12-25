@@ -22,14 +22,17 @@ final class DummyNetworkManager {
         }
     }
     
-    func fetchTasks(for userID: String, completion: @escaping ([TaskModel]) -> Void) {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
-            let tasks = [
-                TaskModel(id: "task1", name: "Do Laundry", point: 5, targetScore: 10),
-                TaskModel(id: "task2", name: "Buy Groceries", point: 3, targetScore: 7),
-                TaskModel(id: "task3", name: "Read a Book", point: 2, targetScore: 5)
-            ]
-            completion(tasks)
-        }
-    }
+    func fetchTasks(for userID: String, taskID: String, completion: @escaping (TaskModel?) -> Void) {
+         DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
+             let tasks = [
+                 TaskModel(id: "task1", name: "Do Laundry", point: 5, targetScore: 10),
+                 TaskModel(id: "task2", name: "Buy Groceries", point: 3, targetScore: 7),
+                 TaskModel(id: "task3", name: "Read a Book", point: 2, targetScore: 5)
+             ]
+             
+             // Filter the task based on userID and taskID
+             let task = tasks.first { $0.id == taskID }
+             completion(task)
+         }
+     }
 }

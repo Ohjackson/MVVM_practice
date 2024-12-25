@@ -7,36 +7,47 @@
 
 import Foundation
 
-class TaskViewModel {
-    private var task: TaskModel
+final class TaskViewModel {
+    
+    private var task: TaskModel?
 
+    init(task: TaskModel) {
+           self.task = task
+       }
+    
     var taskName: String {
-        return task.name
+        return task?.name ?? "Unknown Task"
     }
 
     var currentPoint: Int {
-        return task.point
+        return task?.point ?? 0
     }
 
     var targetScore: Int {
-        return task.targetScore
+        return task?.targetScore ?? 0
     }
-
+        //Closure를 사용하여 데이터 변경 이벤트를 전달하기 위한 프로퍼티 ⭐️
     var pointUpdated: ((Int) -> Void)?
 
-    init(task: TaskModel) {
-        self.task = task
+    func fetchTask(for userID: String, taskID: String, completion: @escaping () -> Void) {
+        DummyNetworkManager.shared.fetchTasks(for: userID, taskID: taskID) { [weak self] fetchedTask in
+            guard let self = self else { return }
+            self.task = fetchedTask
+            completion()
+        }
     }
 
     func increasePoint() {
-        task.point += 1
-        pointUpdated?(task.point)
+        guard var currentTask = task else { return }
+        currentTask.point += 1
+        task = currentTask
+        pointUpdated?(currentTask.point)
     }
 
     func decreasePoint() {
-        if task.point > 0 {
-            task.point -= 1
-            pointUpdated?(task.point)
-        }
+        guard var currentTask = task, currentTask.point > 0 else { return }
+        currentTask.point -= 1
+        task = currentTask
+        pointUpdated?(currentTask.point)
     }
 }

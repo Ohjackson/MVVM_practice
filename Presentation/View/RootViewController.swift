@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class RootNaviViewController: UIViewController {
+final class RootViewController: UIViewController {
     
     private let buttonA = UIButton()
     private let buttonB = UIButton()
@@ -96,7 +96,15 @@ final class RootNaviViewController: UIViewController {
     }
 
     @objc private func navigateToScreenC() {
-        let screenC = TaskViewController(viewModel: <#TaskViewModel#>)
+        // TaskModel을 생성
+        let task = TaskModel(id: "task1", name: "Sample Task", point: 5, targetScore: 10)
+        
+        // TaskViewModel 생성
+        let taskViewModel = TaskViewModel(task: task)
+        
+        // TaskViewController 생성 시 ViewModel 전달
+        let screenC = TaskViewController(viewModel: taskViewModel)
         navigationController?.pushViewController(screenC, animated: true)
     }
+
 }
