@@ -38,6 +38,9 @@ final class TaskListViewController: UIViewController {
     private func setStyle() {
         view.backgroundColor = .white
         
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(didTapBackButton))
+            navigationItem.leftBarButtonItem = backButton
+        
         folderNameLabel.do {
             $0.font = .boldSystemFont(ofSize: 24)
             $0.textColor = .black
@@ -96,6 +99,10 @@ final class TaskListViewController: UIViewController {
     
     private func fetchData() {
         viewModel.fetchTasks()
+    }
+    
+    @objc private func didTapBackButton() {
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func didTapAddTaskButton() {
