@@ -138,10 +138,12 @@ extension TaskListViewController: UITableViewDataSource, UITableViewDelegate {
         let taskVC = TaskViewController(viewModel: taskViewModel)
         
         // TaskViewController를 모달로 표시
-        taskVC.modalPresentationStyle = .fullScreen // 또는 .pageSheet
-        present(taskVC, animated: true)
-        
-        tableView.deselectRow(at: indexPath, animated: true)
+//        taskVC.modalPresentationStyle = .fullScreen // 또는 .pageSheet
+//        present(taskVC, animated: true)
+//        
+//        tableView.deselectRow(at: indexPath, animated: true)
+        navigationController?.pushViewController(taskVC, animated: true)
+
     }
     
 }

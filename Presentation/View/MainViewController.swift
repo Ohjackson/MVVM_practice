@@ -107,6 +107,10 @@ final class MainViewController: UIViewController {
     }
 }
 
+
+
+
+
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.folders.count
@@ -129,8 +133,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
            // ViewModel 생성 및 TaskListViewController로 모달로 표시
            let taskListViewModel = TaskListViewModel(folderID: folderID, folderName: folderName)
            let taskListVC = TaskListViewController(viewModel: taskListViewModel)
-           taskListVC.modalPresentationStyle = .fullScreen // 모달 스타일 설정
-           present(taskListVC, animated: true, completion: nil)
+        
+//           taskListVC.modalPresentationStyle = .fullScreen // 모달 스타일 설정
+//           present(taskListVC, animated: true, completion: nil)
+            navigationController?.pushViewController(taskListVC, animated: true)
+
        }
     
 }

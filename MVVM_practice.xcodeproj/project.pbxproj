@@ -145,8 +145,8 @@
 				D69A31692D1BFA6F00DFFEDB /* ViewController.swift */,
 				D69A318A2D1C0BCB00DFFEDB /* UserLoginViewController.swift */,
 				D64AD4152D1C8ED800B3BD4B /* MainViewController.swift */,
-				D64D7B0C2D1C36D9000495C2 /* TaskViewController.swift */,
 				D64AD4172D1C925D00B3BD4B /* TaskListViewController.swift */,
+				D64D7B0C2D1C36D9000495C2 /* TaskViewController.swift */,
 				D6FBAB1A2D22BA43000C6D44 /* Views */,
 				D64AD40B2D1C7EA400B3BD4B /* RootViewController.swift */,
 			);
