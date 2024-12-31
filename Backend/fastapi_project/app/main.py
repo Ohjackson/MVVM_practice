@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.db.database import connect_to_mongo, close_mongo_connection
 from app.api.endpoints import task_folder
+from app.api.endpoints import MVVM
 
 app = FastAPI()
 
@@ -12,4 +13,5 @@ async def startup_event():
 async def shutdown_event():
     await close_mongo_connection()
 
-app.include_router(task_folder.router, prefix="/folders", tags=["folders"])
+
+app.include_router(MVVM.router, prefix="/MVVM", tags=["MVVM"])

@@ -24,5 +24,6 @@ class TaskFolder(BaseModel):
     create_time: datetime = Field(default_factory=datetime.utcnow)
 
     class Config:
+        from_attributes = True  # Pydantic v2에서 사용
         populate_by_name = True
         json_encoders = {ObjectId: str}
