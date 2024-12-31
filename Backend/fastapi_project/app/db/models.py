@@ -1,30 +1,28 @@
-from sqlalchemy import Column, String, Float, Integer, DateTime, ForeignKey
-from sqlalchemy.orm import relationship
-from app.db.database import Base
+from pydantic import BaseModel, Field
+from bson import ObjectId
 from datetime import datetime
 
-class User(Base):
-    __tablename__ = "users"
-    user_id = Column(String, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    height = Column(Float, nullable=False)
-    email = Column(String, unique=True, nullable=False)
-    folders = relationship("TaskFolder", back_populates="user")
+class PyObjectId(ObjectId):
+    @classmethod
+    def __get_validators__(cls):
+        yield cls.validate
 
-class TaskFolder(Base):
-    __tablename__ = "task_folders"
-    id = Column(String, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    user_id = Column(String, ForeignKey("users.user_id"), nullable=False)
-    create_time = Column(DateTime, default=datetime.utcnow)
-    tasks = relationship("Task", back_populates="folder")
-    user = relationship("User", back_populates="folders")
+    @classmethod
+    def validate(cls, v):
+        if not ObjectId.is_valid(v):
+            raise ValueError("Invalid ObjectId")
+        return ObjectId(v)
 
-class Task(Base):
-    __tablename__ = "tasks"
-    id = Column(String, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    point = Column(Integer, default=0)
-    target_score = Column(Integer, nullable=False)
-    folder_id = Column(String, ForeignKey("task_folders.id"), nullable=False)
-    folder = relationship("TaskFolder", back_populates="tasks")
+    @classmethod
+    def __get_pydantic_json_schema__(cls, handler):
+        return {"type": "string"}
+
+class TaskFolder(BaseModel):
+    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
+    name: str
+    user_id: str
+    create_time: datetime = Field(default_factory=datetime.utcnow)
+
+    class Config:
+        populate_by_name = True
+        json_encoders = {ObjectId: str}
