@@ -95,8 +95,10 @@ final class UserLoginViewController: UIViewController {
     }
 
     private func navigateToMainView() {
-        let mainViewController = ViewController()
+        let mainViewController = MainViewController()
         mainViewController.modalPresentationStyle = .fullScreen
+        mainViewController.modalTransitionStyle = .flipHorizontal// 애니
+
         present(mainViewController, animated: true, completion: nil)
     }
 }

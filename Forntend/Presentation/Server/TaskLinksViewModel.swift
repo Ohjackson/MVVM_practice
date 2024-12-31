@@ -6,7 +6,7 @@
 //
 
 import Foundation
-final class TaskLiViewModel {
+final class TaskLinksViewModel {
     private(set) var tasks: [TaskModel] = []
     private let folderID: String
     private(set) var folderName: String

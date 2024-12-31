@@ -38,6 +38,9 @@ final class TaskListViewController: UIViewController {
     private func setStyle() {
         view.backgroundColor = .white
         
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(didTapBackButton))
+            navigationItem.leftBarButtonItem = backButton
+        
         folderNameLabel.do {
             $0.font = .boldSystemFont(ofSize: 24)
             $0.textColor = .black
@@ -98,6 +101,10 @@ final class TaskListViewController: UIViewController {
         viewModel.fetchTasks()
     }
     
+    @objc private func didTapBackButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @objc private func didTapAddTaskButton() {
         let alert = UIAlertController(title: "New Task", message: "Enter task name", preferredStyle: .alert)
         alert.addTextField { textField in
@@ -138,10 +145,12 @@ extension TaskListViewController: UITableViewDataSource, UITableViewDelegate {
         let taskVC = TaskViewController(viewModel: taskViewModel)
         
         // TaskViewController를 모달로 표시
-        taskVC.modalPresentationStyle = .fullScreen // 또는 .pageSheet
-        present(taskVC, animated: true)
-        
-        tableView.deselectRow(at: indexPath, animated: true)
+//        taskVC.modalPresentationStyle = .fullScreen // 또는 .pageSheet
+//        present(taskVC, animated: true)
+//        
+//        tableView.deselectRow(at: indexPath, animated: true)
+        navigationController?.pushViewController(taskVC, animated: true)
+
     }
     
 }

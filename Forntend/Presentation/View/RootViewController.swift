@@ -91,7 +91,7 @@ final class RootViewController: UIViewController {
     }
 
     @objc private func navigateToScreenB() {
-        let screenB = UserLoginViewController()
+        let screenB = MainViewController()
         navigationController?.pushViewController(screenB, animated: true)
     }
 

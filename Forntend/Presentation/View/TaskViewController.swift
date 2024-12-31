@@ -53,7 +53,7 @@ final class TaskViewController: UIViewController {
     }
     
     @objc private func didTapBackButton() {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 
     
