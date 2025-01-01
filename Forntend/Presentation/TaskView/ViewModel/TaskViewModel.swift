@@ -9,6 +9,12 @@ import Foundation
 
 final class TaskViewModel {
     
+    
+    // ObservablePattern을 사용해 값을 관찰
+      let currentPoint: ObservablePattern<Int> = ObservablePattern(0)
+      let isTargetAchieved: ObservablePattern<Bool> = ObservablePattern(false)
+
+    
     //네트워크로 담겨질 데이터 바구니
     private var task: TaskModel?
 
@@ -23,16 +29,9 @@ final class TaskViewModel {
         return task?.name ?? "Unknown Task"
     }
 
-    var currentPoint: Int {
-        return task?.point ?? 0
-    }
-
     var targetScore: Int {
         return task?.targetScore ?? 0
     }
-        //Closure를 사용하여 데이터 변경 이벤트를 전달하기 위한 프로퍼티 ⭐️
-    var pointUpdated: ((Int) -> Void)?
-
     
     //네트워크 통신을 가정한 함수
     func fetchTask(taskID: String, completion: @escaping () -> Void) {
@@ -48,13 +47,19 @@ final class TaskViewModel {
         guard var currentTask = task else { return }
         currentTask.point += 1
         task = currentTask
-        pointUpdated?(currentTask.point)
+        
+        // ObservablePattern을 통해 값 변경 통지
+             currentPoint.value = currentTask.point
+             isTargetAchieved.value = currentTask.point >= targetScore
     }
 
     func decreasePoint() {
         guard var currentTask = task, currentTask.point > 0 else { return }
         currentTask.point -= 1
         task = currentTask
-        pointUpdated?(currentTask.point)
+        
+        // ObservablePattern을 통해 값 변경 통지
+            currentPoint.value = currentTask.point
+            isTargetAchieved.value = currentTask.point >= targetScore
     }
 }

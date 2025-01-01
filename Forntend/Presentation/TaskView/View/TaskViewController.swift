@@ -160,9 +160,20 @@ extension TaskViewController {
     private func bindViewModel() {
         
         
-        viewModel.pointUpdated = { [weak self] newPoint in
-            guard let self = self else { return }
-            self.currentPointLabel.text = "\(newPoint)"
+        // `currentPoint` 관찰
+        viewModel.currentPoint.bind { [weak self] newPoint in
+            guard let self = self, let newPoint = newPoint else { return }
+            DispatchQueue.main.async {
+                self.currentPointLabel.text = "Current Point: \(newPoint)"
+            }
+        }
+        
+        // `isTargetAchieved` 관찰
+        viewModel.isTargetAchieved.bind { [weak self] isAchieved in
+            guard let self = self, let isAchieved = isAchieved else { return }
+            DispatchQueue.main.async {
+                self.handleAnimation(turnOn: isAchieved)
+            }
         }
         
         decreaseButton.addTarget(self, action: #selector(didTapDecreaseButton), for: .touchUpInside)
@@ -171,10 +182,10 @@ extension TaskViewController {
     
     
     private func handleAnimation(turnOn: Bool) {
-          UIView.animate(withDuration: 0.5) {
-              self.animationView.alpha = turnOn ? 1 : 0
-          }
-      }
+        UIView.animate(withDuration: 0.5) {
+            self.animationView.alpha = turnOn ? 1 : 0
+        }
+    }
     
     //function
     @objc private func didTapDecreaseButton() {
@@ -189,5 +200,5 @@ extension TaskViewController {
     @objc private func didTapBackButton() {
         navigationController?.popViewController(animated: true)
     }
-
+    
 }
