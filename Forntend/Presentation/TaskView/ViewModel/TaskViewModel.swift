@@ -38,6 +38,8 @@ final class TaskViewModel {
         DummyNetworkManager.shared.fetchTask(for: taskID) { [weak self] (fetchedTask: TaskModel?) in
             guard let self = self else { return }
             self.task = fetchedTask
+            //ObservablePattern로 선언된 viewModel.currentPoint.value 의 초기값은 0으로 되어 있는데 fetchTask를 통한 업데이트 적용이 되질않아 명시적 선언. -> 해결 안됨
+            self.currentPoint.value = fetchedTask?.point ?? 0
             //네트워크 비동기통신으로 인한 딜레이로 모든 데이터를 다 받았을시에 이 함수 호출 주체에게 완료를 알리는 기능
             completion()
         }

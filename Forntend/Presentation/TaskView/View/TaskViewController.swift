@@ -152,7 +152,6 @@ extension TaskViewController {
             DispatchQueue.main.async {
                 self.taskNameLabel.text = self.viewModel.taskName
                 self.targetScoreLabel.text = "Target Score: \(self.viewModel.targetScore)"
-                self.currentPointLabel.text = "Current Point: \(self.viewModel.currentPoint)"
             }
         }
     }
@@ -163,8 +162,14 @@ extension TaskViewController {
         // `currentPoint` 관찰
         viewModel.currentPoint.bind { [weak self] newPoint in
             guard let self = self, let newPoint = newPoint else { return }
+            
+            
+            //정상 출력 이다만 뷰에 값 업데이트가 안됨 -> 155번줄과 중복 업뎃 의심 -> 정답⭐️
+            print("Updated Current Point: \(String(describing: newPoint))") // 값 로그 출력
+
             DispatchQueue.main.async {
-                self.currentPointLabel.text = "Current Point: \(newPoint)"
+                print("\n\(newPoint)\n")
+                self.currentPointLabel.text = "\(newPoint)"
             }
         }
         

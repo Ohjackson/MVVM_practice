@@ -96,15 +96,8 @@ final class RootViewController: UIViewController {
     }
 
     @objc private func navigateToScreenC() {
-        // TaskModel을 생성
-        let task = TaskModel(id: "task1", name: "Sample Task", point: 5, targetScore: 10)
-        
-        // TaskViewModel 생성
-        let taskViewModel = TaskViewModel(task: task)
-        
-        // TaskViewController 생성 시 ViewModel 전달
-        let screenC = TaskViewController(viewModel: taskViewModel)
-        navigationController?.pushViewController(screenC, animated: true)
+        let screenB = MainViewController()
+        navigationController?.pushViewController(screenB, animated: true)
     }
 
 }
