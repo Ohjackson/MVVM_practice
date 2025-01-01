@@ -9,10 +9,14 @@ import Foundation
 
 final class TaskViewModel {
     
+    //네트워크로 담겨질 데이터 바구니
     private var task: TaskModel?
 
-    init(task: TaskModel) {
-           self.task = task
+    //이전뷰에서 받은 아이디 #1
+    let taskID: String
+
+    init(Id: String) {
+           self.taskID = Id
        }
     
     var taskName: String {
@@ -29,14 +33,16 @@ final class TaskViewModel {
         //Closure를 사용하여 데이터 변경 이벤트를 전달하기 위한 프로퍼티 ⭐️
     var pointUpdated: ((Int) -> Void)?
 
-    func fetchTask(for userID: String, taskID: String, completion: @escaping () -> Void) {
-        DummyNetworkManager.shared.fetchTask(for: userID, taskID: taskID) { [weak self] (fetchedTask: TaskModel?) in
+    
+    //네트워크 통신을 가정한 함수
+    func fetchTask(taskID: String, completion: @escaping () -> Void) {
+        DummyNetworkManager.shared.fetchTask(for: taskID) { [weak self] (fetchedTask: TaskModel?) in
             guard let self = self else { return }
             self.task = fetchedTask
+            //네트워크 비동기통신으로 인한 딜레이로 모든 데이터를 다 받았을시에 이 함수 호출 주체에게 완료를 알리는 기능
             completion()
         }
     }
-
 
     func increasePoint() {
         guard var currentTask = task else { return }

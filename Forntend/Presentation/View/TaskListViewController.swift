@@ -139,8 +139,8 @@ extension TaskListViewController: UITableViewDataSource, UITableViewDelegate {
         let selectedTask = viewModel.tasks[indexPath.row]
         
         // TaskViewModel 생성
-        let taskViewModel = TaskViewModel(task: selectedTask)
-        
+        let taskViewModel = TaskViewModel(Id: selectedTask.id)
+
         // TaskViewController 생성
         let taskVC = TaskViewController(viewModel: taskViewModel)
         

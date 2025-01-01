@@ -5,6 +5,8 @@
 //  Created by Jaehyun Ahn on 12/26/24.
 //
 
+// 네트워크 사용을 가정함.
+
 import Foundation
 
 import Foundation
@@ -40,7 +42,7 @@ final class DummyNetworkManager {
         }
     }
     
-    func fetchTask(for userID: String, taskID: String, completion: @escaping (TaskModel?) -> Void) {
+    func fetchTask(for taskID: String, completion: @escaping (TaskModel?) -> Void) {
         DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
             // Filter the tasks array for the matching taskID
             let task = self.tasks.first { $0.id == taskID }
