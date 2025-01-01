@@ -5,6 +5,8 @@
 //  Created by Jaehyun Ahn on 12/26/24.
 //
 
+// 네트워크 사용을 가장한 임시데이터 셋트임으로 참고만.
+
 import Foundation
 
 final class DummyDatabaseManager {

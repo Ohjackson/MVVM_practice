@@ -21,6 +21,9 @@ final class TaskViewController: UIViewController {
     private var decreaseButton = UIButton()
     private var increaseButton = UIButton()
     
+    private let animationView = UILabel() // 애니메이션 뷰 추가
+    
+    
     init(viewModel: TaskViewModel) {
         
         self.viewModel = viewModel
@@ -34,6 +37,8 @@ final class TaskViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        //네트워크 처리
+        fetchData()
         setStyle()
         setHierarchy()
         setLayout()
@@ -52,27 +57,19 @@ final class TaskViewController: UIViewController {
         )
     }
     
-    @objc private func didTapBackButton() {
-        navigationController?.popViewController(animated: true)
-    }
-
-    
     private func setStyle() {
         
         taskNameLabel.do {
-            $0.text = viewModel.taskName
             $0.font = UIFont.boldSystemFont(ofSize: 24)
             $0.textAlignment = .center
         }
         
         targetScoreLabel.do {
-            $0.text = "Target Score: \(viewModel.targetScore)"
             $0.font = UIFont.systemFont(ofSize: 18)
             $0.textAlignment = .center
         }
         
         currentPointLabel.do {
-            $0.text = "\(viewModel.currentPoint)"
             $0.font = UIFont.boldSystemFont(ofSize: 32)
             $0.textAlignment = .center
         }
@@ -92,6 +89,13 @@ final class TaskViewController: UIViewController {
             $0.setTitleColor(.white, for: .normal)
             $0.layer.cornerRadius = 25
         }
+        
+        animationView.do {
+            $0.text = "✅"
+            $0.font = UIFont.systemFont(ofSize: 100)
+            $0.alpha = 0
+            $0.textAlignment = .center
+        }
     }
     
     private func setHierarchy() {
@@ -101,6 +105,7 @@ final class TaskViewController: UIViewController {
         view.addSubview(currentPointLabel)
         view.addSubview(decreaseButton)
         view.addSubview(increaseButton)
+        view.addSubview(animationView)
     }
     
     private func setLayout() {
@@ -130,18 +135,58 @@ final class TaskViewController: UIViewController {
             make.right.equalToSuperview().inset(100)
             make.width.height.equalTo(50)
         }
+        
+        animationView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+    
+}
+
+extension TaskViewController {
+    
+    private func fetchData() {
+        //complition으로 클로처리 -> view에 데이터 할당
+        viewModel.fetchTask(taskID: viewModel.taskID) {
+            // 네트워크 요청 완료 후 실행할 작업
+            DispatchQueue.main.async {
+                self.taskNameLabel.text = self.viewModel.taskName
+                self.targetScoreLabel.text = "Target Score: \(self.viewModel.targetScore)"
+            }
+        }
     }
     
     private func bindViewModel() {
-        viewModel.pointUpdated = { [weak self] newPoint in
-            guard let self = self else { return }
-            self.currentPointLabel.text = "\(newPoint)"
+        
+        
+        // `currentPoint` 관찰
+        viewModel.currentPoint.bind { [weak self] newPoint in
+            guard let self = self, let newPoint = newPoint else { return }
+            DispatchQueue.main.async {
+                self.currentPointLabel.text = "\(newPoint)"
+            }
+        }
+        
+        // `isTargetAchieved` 관찰
+        viewModel.isTargetAchieved.bind { [weak self] isAchieved in
+            guard let self = self, let isAchieved = isAchieved else { return }
+            DispatchQueue.main.async {
+                self.handleAnimation(turnOn: isAchieved)
+            }
         }
         
         decreaseButton.addTarget(self, action: #selector(didTapDecreaseButton), for: .touchUpInside)
         increaseButton.addTarget(self, action: #selector(didTapIncreaseButton), for: .touchUpInside)
     }
     
+    
+    private func handleAnimation(turnOn: Bool) {
+        UIView.animate(withDuration: 0.5) {
+            self.animationView.alpha = turnOn ? 1 : 0
+        }
+    }
+    
+    //function
     @objc private func didTapDecreaseButton() {
         viewModel.decreasePoint()
     }
@@ -149,4 +194,10 @@ final class TaskViewController: UIViewController {
     @objc private func didTapIncreaseButton() {
         viewModel.increasePoint()
     }
+    
+    //navigation
+    @objc private func didTapBackButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
